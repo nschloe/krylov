@@ -43,6 +43,7 @@ plt.style.use(dufte.style)
 plt.semilogy(info.resnorms)
 plt.show()
 ```
+<img alt="gmres" src="https://nschloe.github.io/krylov/gmres.svg" width="40%"/>
 
 ### Improvements over SciPy
 
