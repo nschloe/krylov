@@ -44,12 +44,10 @@ plt.show()
 ```
 
 ### Testing
-
 To run the krylov unit tests, check out this repository and type
 ```
 pytest
 ```
 
 ### License
-
 krylov is published under the [MIT license](https://en.wikipedia.org/wiki/MIT_License).
