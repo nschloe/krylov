@@ -33,15 +33,41 @@ b = numpy.ones(100)
 # sol, info = krylov.minres(A, b)
 sol, info = krylov.gmres(A, b)
 
-# sol is None if no solution has been found
-# onfo.resnorms contains the relative residual norms and some more data
+# info.resnorms contains the residual norms and some more data
 
 # plot residuals
+import dufte
 import matplotlib.pyplot as plt
 
+plt.style.use(dufte.style)
 plt.semilogy(info.resnorms)
 plt.show()
 ```
+
+### Improvements over SciPy
+
+
+* krylov has better errors. When not converged, krylov yields an
+  `krylov.errors.ConvergenceError`:
+  ```python
+  import numpy
+
+  numpy.random.seed(0)
+  A = numpy.random.rand(5, 5)
+  b = numpy.random.rand(5)
+  # matrix is not symmetric, cg will fail to converge
+
+  import scipy.sparse.linalg
+
+  sol, _ = scipy.sparse.linalg.cg(A, b)  # "no problem"
+
+  import krylov
+
+  sol, _ = krylov.cg(A, b)  # error
+  ```
+  ```
+  krylov.errors.ConvergenceError: No convergence in last iteration (maxiter: 5, residual: 5.663e+00).
+  ```
 
 ### Testing
 To run the krylov unit tests, check out this repository and type

@@ -255,7 +255,7 @@ def cg(
         if k + 1 == maxiter:
             raise ConvergenceError(
                 "No convergence in last iteration "
-                f"(maxiter: {maxiter}, residual: {resnorms[-1]})."
+                f"(maxiter: {maxiter}, residual: {resnorms[-1]:.3e})."
             )
 
         k += 1
